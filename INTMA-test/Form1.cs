@@ -105,6 +105,13 @@ namespace INTMA_test
             dataGrid3.DataSource = dt;
             myConnection.Close();
 
+            WriteToCsv(filePath, dt);
+
+        }
+
+        private void WriteToCsv(string filePath, DataTable dt)
+        {
+
             StringBuilder sb = new StringBuilder();
 
             IEnumerable<string> columnNames = dt.Columns.Cast<DataColumn>().
@@ -119,7 +126,6 @@ namespace INTMA_test
             }
 
             File.WriteAllText(filePath, sb.ToString());
-
         }
 
 
